@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Functions</title>
+  </head>
+  <body>
+    <div class="vertical-nav bg-white" id="sidebar">
+      <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+          <div class="media-body">
+            <h4 class="m-0">Python Tutorial</h4>
+          </div>
+        </div>
+      </div>
+      <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link text-dark bg-light">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="sample.html" class="nav-link text-dark">Python Variables</a>
+        </li>
+        <li class="nav-item">
+          <a href="operator.html" class="nav-link text-dark">Python Operators</a>
+        </li>
+        <li class="nav-item">
+          <a href="sets.html" class="nav-link text-dark">Sets and Lists</a>
+        </li>
+        <li class="nav-item">
+          <a href="loops.html" class="nav-link text-dark">Python Loops</a>
+        </li>
+        <li class="nav-item">
+          <a href="functions.html" class="nav-link text-dark">Python Functions</a></li>
+      </ul>
+    </div>
+
+    <div class="page-content p-5" id="content">
+      <h1>
+        Functions
+      </h1>
+      <h2>
+        Creating and Calling Function
+      </h2>
+      <ul>
+        <li>Function is a part of code which we can use anywhere</li>
+        <li>We can pass some parameter and we can do certain operations using the parameter and return a result or print something</li>
+        <li>We can define a function using "def" in python</li>
+        <li>To call a function use the function name followed by parenthesis (empty if no parameter,else required parameters</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+					def my_function()<br>
+          &ensp;&ensp;print("Hello World")<br><br>
+          my_function() #prints Hello World
+				</div>
+			</div>
+      <h2>
+        Arguments
+      </h2>
+      <ul>
+        <li>Information can be passed to the function as arguments</li>
+        <li>We can add as many arguments as we want, use the operations and can return the output</li>
+        <li> If we give the Incorrect number of arguments it will pop up an error</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+					myfunc(firstname,lastname)<br>
+          &ensp;&ensp;return firstname+"  "+lastname<br>
+          <br>
+          print(myfunc("Ram","Krishna"))<br>
+          #Ram  Krishna
+				</div>
+			</div>
+      <ul>
+        <li>To get a value from function, use the "return" statement</li>
+        <li>We cant keep the function empty, but to have the function with no content we can put the "pass" statement to avoid the error</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+          mynonfunc(num)<br>
+          &ensp;&ensp;pass<br><br>
+          #the above function will not show any error
+					myfunc(num)<br>
+          &ensp;&ensp;return 5*num<br>
+          <br>
+          print(myfunc(10))<br>
+          #50
+				</div>
+			</div>
+      <h2>
+        Recursion
+      </h2>
+      <ul>
+        <li>We can call the same function within the same function</li>
+        <li> But we should be careful with the end of the recursion</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+         myrecu(k)<br>
+         &ensp;&ensp;if (k>0):<br>
+         &ensp;&ensp;&ensp;&ensp;result=k+myrecu(k-1)<br>
+         &ensp;&ensp;else:<br>
+         &ensp;&ensp;&ensp;&ensp;result=0<br>
+         &ensp;&ensp;return result<br><br>
+         print(myrecu(6)) #21
+				</div>
+			</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
