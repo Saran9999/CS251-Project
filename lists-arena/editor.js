@@ -71,6 +71,10 @@ function addToOutput(s) {
 }
 
 function check(s,j,m,n){
+  if (s==9)
+  {
+    document.getElementById("goal3").style.color="green";
+  }
   if(s==9){
     if (gem[1] == 0 && gem[2] == 1 && gem[3] == 0 && gem[4] == 1 && gem[5] == 0 && gem[6] == 1 && gem[7] == 1)
     {
@@ -119,6 +123,22 @@ function check(s,j,m,n){
       }
     }
   }
+  if ( gem[2] == 1 && gem[4] == 1 && gem[6] == 1 && gem[7] == 1)
+  {
+    document.getElementById("goal1").style.color="green";
+  }
+  else
+  {
+    document.getElementById("goal1").style.color="blanchedalmond";
+  }
+  if (gem[1] == 1 || gem[3] == 1 || gem[5]==1)
+  {
+    document.getElementById("goal2").style.color="blanchedalmond";
+  }
+  else
+  {
+    document.getElementById("goal2").style.color="green";
+  }
 }
 
 function moving_out(){
@@ -146,7 +166,7 @@ async function evaluatePython() {
     var x = (codeEditor.getValue()).split("\n");
     var k = [];
     for(var i = 0;i<x.length;i++){
-      if((x[i]=="Hero.moveTo")||(x[i]=="Hero.ADD")||(x[i]=="Hero.DEL")){
+      if((x[i]=="Hero.moveTo")||(x[i]=="Hero.ADD")||(x[i]=="Hero.DEL") || (x[i] == "Hero")){
         k.push({
           row : i,
           column : 0,
@@ -174,7 +194,10 @@ async function evaluatePython() {
             c.shift();
           }
           position = new_pos;
-
+          if (new_pos==9)
+          {
+            document.getElementById("goal3").style.color="green";
+          }
           $("#warrior").animate({top:(points[new_pos][1] + "px"),left:(points[new_pos][0] + "px") },{duration:1000,complete:function(){check(new_pos,k3,k1,k2)}});
         }
         else{
