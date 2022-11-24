@@ -1,0 +1,94 @@
+#table
+{
+  display: flex;
+}
+#example
+{
+    width: 500px;
+    border-left: 5px solid goldenrod;
+    padding-left: 10px;
+    margin: 20px;
+}
+#exf
+{
+    color : rgb(238, 132, 132);
+}
+body {
+  background: #599fd9;
+  background-image: linear-gradient( 135.9deg,  rgb(25, 252, 93) 16.4%, rgb(38, 31, 165) 56.1% );
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+ .vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+.separator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+  letter-spacing: 0.1em;
+}
+.text-gray {
+  color: #aaa;
+}
+.nav-link{
+    text-transform: capitalize;
+}
+.nav-link:hover{
+    background:#f3f2f2;
+}
+.text-primary{
+    color:#7579e7 !important;
+}
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}
+.input{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  width: 100%;
+  
+}
+
+.input:focus{
+  outline: none;
+}

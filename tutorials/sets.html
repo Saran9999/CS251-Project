@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sets and Lists</title>
+  </head>
+  <body>
+    <div class="vertical-nav bg-white" id="sidebar">
+      <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+          <div class="media-body">
+            <h4 class="m-0">Python Tutorial</h4>
+          </div>
+        </div>
+      </div>
+      <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link text-dark bg-light">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="sample.html" class="nav-link text-dark">Python Variables</a>
+        </li>
+        <li class="nav-item">
+          <a href="operator.html" class="nav-link text-dark">Python Operators</a>
+        </li>
+        <li class="nav-item">
+            <a href="sets.html" class="nav-link text-dark">Sets and Lists</a>
+          </li>
+        <li class="nav-item">
+          <a href="loops.html" class="nav-link text-dark">Python Loops</a>
+        </li>
+        <li class="nav-item">
+          <a href="functions.html" class="nav-link text-dark">Python Functions</a>
+        </li>
+      </ul>
+    </div>
+    <div class="page-content p-5" id="content">
+      <h1>
+        Sets
+      </h1>
+      <ul>
+        <li>Sets are used to store the multiple items in a single variables</li>
+        <li>set is collection of object which is unordered and unindexed </li>
+        <li>sets are written with curly brackets</li>
+        <li>unordered means there is no specific order,it can appear in different orders every time you use them</li>
+        <li>Sets cant have the two items with same values</li>
+        <li> Sets can have different data types</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+					set1={1,2,3,"python",True}<br>
+           #can have any type<br>
+          set2={1,2,3,1}<br>
+          print(set2)#prints {1,2,3}<br>
+          #sets cant have duplicate values
+				</div>
+			</div>
+      <h2>
+        Add and Remove
+      </h2>
+      <ul>
+        <li>To add one element we can use "add()" </li>
+        <li>To add items from one set to another set we can use the "update()" </li>
+        <li>if we use the + operator then we will get the union of 2 sets</li>
+        <li> We can remove a element from the set by using "remove()", place the object in brackets</li>
+        <li>if item is not present then remove() will raise an error</li>
+        <li>We can also use the "discard()" function which will not pop up any error when the element is not present in the set</li>
+        <li>We can use the "pop()" to remove the last item, but sets are unordered so we dont know which items that gets removed </li>
+        <li>return value of the pop() is the removed item</li>
+        <li>"clear()" will empty the set</li>
+        <li>del will delete the set completely</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+					set1={1,2,3}<br>
+          set2={4,5}<br>
+          set3=set1+set2 #set3 will be {1,2,3,4,5}<br>
+          set1.add(4) #adds 4 to the set<br>
+          set1.update({4,5,6})<br>
+          print(set1) #prints {1,2,3,4,5,6}<br>
+          set1.discard(6) #removes 6<br>
+          x=set1.pop()
+          print(x) #prints 1
+          print(set1) #prints {2,3,4,5}
+          set1.clear() #remove all elements
+          del set1 #deletes the set
+				</div>
+			</div>
+      <h1>
+        Lists
+      </h1>
+      <ul>
+        <li>lists are also used to store the multiple values</li>
+        <li>Lists are created using square brackets</li>
+        <li>List items are ordered with 0 indexed, changeable, and allow duplicate values</li>
+        <li>List items can be of any data type</li>
+        <h2>
+          Indexing
+        </h2>
+        <li>List items are indexed and you can access them by referring to the index number</li>
+        <li>Negative indexing means start from the end</li>
+        <li>You can specify a range of indexes by specifying where to start and where to end the range</li>
+        <li>When specifying a range, the return value will be a new list with the specified items</li>
+        <li>By leaving out the start value, the range will start at the first item</li>
+        <li>By leaving out the end value, the range will go on to the end of the list</li>
+        <li>Specify negative indexes if you want to start the search from the end of the list</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+					list1=[1,2,3,1]<br>
+          list2=[True,"python",1,2,3]<br>
+          print(list1[2]) #prints 3<br>
+          print(list2[:-1]) #prints all elements except the last element<br>
+          print(list2[1:]) #prints ['python', 1, 2, 3]<br>
+          print(list2[1:3]) #prints ['python', 1]<br>
+				</div>
+			</div>
+      <h2>
+        Add and remove
+      </h2>
+      <ul>
+        <li>To add an item to the end of the list, use the "append()"</li>
+        <li>To insert a list item at a specified index, use the "insert()"</li>
+        <li>To append elements from another list to the current list, use the "extend()"</li>
+        <li>By using + operator we can add one list on another list</li>
+        <li>The "remove()" method removes the specified item</li>
+        <li>The "pop()" method removes the specified index</li>
+        <li>If you do not specify the index, the "pop()" method removes the last item</li>
+        <li>The "del" keyword also removes the specified index</li>
+        <li>The "del" keyword can also delete the list completely</li>
+        <li>The "clear()"" method empties the list</li>
+      </ul>
+      <div id="table">
+				<h1 style="font-size: 20px;">
+					Example<br>
+				</h1>
+				<div id="example">
+					list1=[1,2]<br>
+          list2=[True,"python",1,2,3]<br>
+          list3=list1+list2<br>
+          print(list3) #prints [1,2,True,"python",1,2,3]<br>
+          list1.append(3) #adds 3<br>
+          list1.insert(1,"python")<br>
+          print(list1) #prints [1,"python",2]<br>
+          list1.remove("python") #removes python<br>
+          list2.pop(0) #removes True<br>
+          del list2[0]<br>
+          print(list2[0]) #prints 1<br>
+          del list1 #deletes the list1<br>
+          list2.clear() #list2 will be empty
+				</div>
+			</div>
+      <p>Now You completed the tutorial you can play the game</p>
+      <button id="button1" onclick="files()" style="background-image: url(images/b2.jpg);width: 150px; height:50px" ><b>Game</b>
+    </div>
+    </body>
+    <script>
+      function files()
+      {
+        window.location.href="../lists-arena/index.html";
+      }
+    </script>
