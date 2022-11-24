@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .container{
+        position:absolute;
+        top:100px;
+        left:100px;
+        width:252px;
+        height:140px;
+        background: url(images/spritesheet.png);
+      }
+      .classname{
+        -webkit-animation-name: kick;
+        -webkit-animation-timing-function: steps(10);
+        -webkit-animation-duration: 2s;
+        -webkit-animation-iteration-count: 2;
+      }
+
+      @-webkit-keyframes kick{
+        0%{
+          background-position: 0 0;
+        }
+        100%{
+          background-position: -2520px 0;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      function func(){
+        const elem= document.getElementById("p2")
+        elem.classList.remove('classname');
+        void elem.offsetWidth;
+        elem.classList.add('classname')
+      }
+    </script>
+  </head>
+  <body>
+    <div class="whole">
+      <img src="Dungeon.jpg" alt="" style="height:618px;">
+      <button type="button" onclick="func()" name="button">Click</button>
+      <div class="container" id="p2"></div>
+    </div>
+  </body>
+</html>
