@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<title>
+			Operators
+		</title>
+		<meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body style="color: black;">
+		<div class="vertical-nav bg-white" id="sidebar">
+			<div class="py-4 px-3 mb-4 bg-light">
+			  <div class="media d-flex align-items-center">
+				<div class="media-body">
+				  <h4 class="m-0">Python Tutorial</h4>
+				</div>
+			  </div>
+			</div>
+			<ul class="nav flex-column bg-white mb-0" style="background-color: green;">
+			  <li class="nav-item">
+          <a href="index.html" class="nav-link text-dark bg-light">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="sample.html" class="nav-link text-dark">Python Variables</a>
+        </li>
+        <li class="nav-item">
+          <a href="operator.html" class="nav-link text-dark">Python Operators</a>
+        </li>
+        <li class="nav-item">
+          <a href="sets.html" class="nav-link text-dark">Sets and Lists</a>
+        </li>
+        <li class="nav-item">
+          <a href="loops.html" class="nav-link text-dark">Python Loops</a>
+        </li>
+        <li class="nav-item">
+          <a href="functions.html" class="nav-link text-dark">Python Functions</a></li>
+			</ul>
+		  </div>
+          <div class="page-content p-5" id="content" >
+            <h1>
+                Python Operators
+            </h1>
+            <h2>
+              Binary Numbers
+            </h2>
+            <p>
+              Binary numbers are repeated by only 2 numbers (0 and 1) that means in base of 2
+            </p>
+            <p>
+              To convert a number into binary form divide the number by 2 take the reminder and quotient, repeat it with the quotient and place the reminder before thr previous reminders until we get the quotient as 0
+            </p>
+            <div id="table">
+              <h1 style="font-size: 20px;">
+                Example<br>
+              </h1>
+              <div id="example">
+               5=4x1+2x0+1x1<br>
+               that means binary form of 5 = 101<br>
+               3=2x1+1x1<br>
+               that means binary form of 3 = 11
+              </div>
+            </div>
+            <hr>
+            <p>
+              For all the tables consider x=5 (binary:101) and y=3 (binary:011)
+            </p>
+            <h2>
+              Arithmetic Operators
+            </h2>
+            <p>
+              Arithmetic operators are the mathematical operations
+            </p>
+            <table>
+                <tr>
+                <th style="width:25%">Operator</th>
+                <th style="width:35%">Name</th>
+                <th style="width:30%">Example</th>
+                <th style="width:30%">output</th>
+                </tr>
+                <tr>
+                <td>+</td>
+                <td>Addition</td>
+                <td>x + y</td>
+                <td>8</td>
+                </tr>
+                <tr>
+                <td>-</td>
+                <td>Subtraction</td>
+                <td>x - y</td>
+                <td> 2</td>
+                </tr>
+                <tr>
+                <td>*</td>
+                <td>Multiplication</td>
+                <td>x * y</td>
+                <td>15</td>
+                </tr>
+                <tr>
+                <td>/</td>
+                <td>Division</td>
+                <td>x / y</td>
+                <td>1.6666666666666667</td>
+                </tr>
+                <tr>
+                <td>%</td>
+                <td>Modulus</td>
+                <td>x % y</td>
+                <td>2</td>
+                </tr>
+                  <tr>
+                <td>**</td>
+                <td>Exponentiation</td>
+                <td>x ** y</td>
+                <td>125</td>
+                  </tr>
+                <tr>
+                <td>//</td>
+                <td>Floor division</td>
+                <td>x // y</td>
+                <td>1</td>
+                </tr>
+                </table>
+                
+                <hr>
+                <h2>Python Bitwise Operators</h2>
+                
+                <p>Bitwise operators are used to compare (binary) numbers:</p>
+                
+                <table>
+                <tr>
+                <th style="width:10%">Operator</th>
+                <th style="width:15%">Name</th>
+                <th style="width:75%">Description</th>
+                </tr>
+                  <tr>
+                <td>&amp;&nbsp;</td>
+                <td>AND</td>
+                <td>Sets each bit to 1 if both bits are 1</td>
+                  </tr>
+                  <tr>
+                <td>|</td>
+                <td>OR</td>
+                <td>Sets each bit to 1 if one of two bits is 1</td>
+                  </tr>
+                  <tr>
+                <td>&nbsp;^</td>
+                <td>XOR</td>
+                <td>Sets each bit to 1 if only one of two bits is 1</td>
+                  </tr>
+                <tr>
+                <td>~&nbsp;</td>
+                <td>NOT</td>
+                <td>Inverts all the bits</td>
+                </tr>
+                <tr>
+                <td>&lt;&lt;</td>
+                <td>Zero fill left shift</td>
+                <td>Shift left by pushing zeros in from the right and let the leftmost bits fall 
+                off</td>
+                </tr>
+                <tr>
+                <td>&gt;&gt;</td>
+                <td>Signed right shift</td>
+                <td>Shift right by pushing copies of the leftmost bit in from the left, and let 
+                the rightmost bits fall off</td>
+                </tr>
+                </table>
+                <hr>
+                <h2>Python Assignment Operators</h2>
+                
+                <p>Assignment operators are used to assign values to variables:</p>
+                
+                <table>
+                <tr>
+                <th style="width:25%">Operator</th>
+                <th style="width:20%">Example</th>
+                <th style="width:20%">Same As</th>
+                <th style="width:10%">Value of x</th>
+                </tr>
+                <tr>
+                <td>=</td>
+                <td>x = 5</td>
+                <td>x = 5</td>
+                <td>5</td>
+                </tr>
+                  <tr>
+                <td>+=</td>
+                <td>x += 3</td>
+                <td>x = x + 3</td>
+                <td>8</td>
+                  </tr>
+                  <tr>
+                <td>-=</td>
+                <td>x -= 3</td>
+                <td>x = x - 3</td>
+                <td>2</td>
+                  </tr>
+                  <tr>
+                <td>*=</td>
+                <td>x *= 3</td>
+                <td>x = x * 3</td>
+                <td>15</td>
+                  </tr>
+                  <tr>
+                <td>/=</td>
+                <td>x /= 3</td>
+                <td>x = x / 3</td>
+                <td>1.6666666666666667</td>
+                  </tr>
+                  <tr>
+                <td>%=</td>
+                <td>x %= 3</td>
+                <td>x = x % 3</td>
+                <td>2</td>
+                  </tr>
+                  <tr>
+                <td>//=</td>
+                <td>x //= 3</td>
+                <td>x = x // 3</td>
+                <td>2</td>
+                  </tr>
+                  <tr>
+                <td>**=</td>
+                <td>x **= 3</td>
+                <td>x = x ** 3</td>
+                <td>125</a></td>
+                  </tr>
+                  <tr>
+                <td>&amp;=</td>
+                <td>x &amp;= 3</td>
+                <td>x = x &amp; 3</td>
+                <td>1 (101 & 011=001)</td>
+                  </tr>
+                  <tr>
+                <td>|=</td>
+                <td>x |= 3</td>
+                <td>x = x | 3</td>
+                <td>7 (101 | 011 =111)</td>
+                  </tr>
+                <tr>
+                <td>^=</td>
+                <td>x ^= 3</td>
+                <td>x = x ^ 3</td>
+                <td>6 (101 ^ 011 = 110 )</td>
+                </tr>
+                <tr>
+                <td>&gt;&gt;=</td>
+                <td>x &gt;&gt;= 3</td>
+                <td>x = x &gt;&gt; 3</td>
+                <td>0(101 >> 3 = 0)</td>
+                </tr>
+                <tr>
+                <td>&lt;&lt;=</td>
+                <td>x &lt;&lt;= 3</td>
+                <td>x = x &lt;&lt; 3</td>
+                <td>40(101 &lt;&lt; 3 =101000)</td>
+                </tr>
+                </table>
+                
+                <hr>
+                <div id="midcontentadcontainer" style="overflow:auto;text-align:center">
+                
+                  <div id="adngin-mid_content-0"></div>
+                  
+                </div>
+                <hr>
+                
+                <h2>Python Comparison Operators</h2>
+                
+                <p>Comparison operators are used to compare two values:</p>
+                
+                <table>
+                <tr>
+                <th style="width:25%">Operator</th>
+                <th style="width:35%">Name</th>
+                <th style="width:30%">Example</th>
+                <th style="width:10%">output for x=5 and y=3</th>
+                </tr>
+                <tr>
+                <td>==</td>
+                <td>Equal</td>
+                <td>x == y</td>
+                <td>False</td>
+                </tr>
+                <tr>
+                <td>!=</td>
+                <td>Not equal</td>
+                <td>x != y</td>
+                <td>True</td>
+                </tr>
+                <tr>
+                <td>&gt;</td>
+                <td>Greater than</td>
+                <td>x &gt; y</td>
+                <td>True</td>
+                </tr>
+                <tr>
+                <td>&lt;</td>
+                <td>Less than</td>
+                <td>x &lt; y</td>
+                <td>False</td>
+                </tr>
+                  <tr>
+                <td>&gt;=</td>
+                <td>Greater than or equal to</td>
+                <td>x &gt;= y</td>
+                <td>True</td>
+                  </tr>
+                <tr>
+                <td>&lt;=</td>
+                <td>Less than or equal to</td>
+                <td>x &lt;= y</td>
+                <td>False</td>
+                </tr>
+                </table>
+                
+                <hr>
+                
+                <h2>Python Logical Operators</h2>
+                
+                <p>Logical operators are used to combine conditional statements:</p>
+                
+                <table>
+                <tr>
+                <th style="width:25%">Operator</th>
+                <th style="width:35%">Description</th>
+                <th style="width:30%">Example</th>
+                <th style="width:10%">Output</th>
+                </tr>
+                <tr>
+                <td>and&nbsp;</td>
+                <td>Returns True if both statements are true</td>
+                <td>x &gt; 4 and&nbsp; x &lt; 10</td>
+                <td>True</td>
+                </tr>
+                <tr>
+                <td>or</td>
+                <td>Returns True if one of the statements is true</td>
+                <td>x &lt; 5 or x &lt; 4</td>
+                <td>False</td>
+                </tr>
+                <tr>
+                <td>not</td>
+                <td>Reverses result, returns False if result is true&ensp;&ensp;</td>
+                <td>not(x &lt; 5 and x &lt; 10)</td>
+                <td>True</td>
+                </tr>
+                </table>
+                
+                <hr>
+                
+                <h2>Python Identity Operators</h2>
+                
+                <p>Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:</p>
+                <div id="table">
+                  <h1 style="font-size: 20px;">
+                    Variables<br>
+                  </h1>
+                  <div id="example">
+                    x=["operator","python"]<br>
+                    y=["operator","python"]<br>
+                    z=x
+                  </div>
+                </div>
+                <table>
+                <tr>
+                <th style="width:25%">Operator</th>
+                <th style="width:35%">Description</th>
+                <th style="width:30%">Example</th>
+                <th style="width:10%">Output</th>
+                </tr>
+                <tr>
+                <td>is&nbsp;</td>
+                <td>Returns True if both variables are the same object</td>
+                <td>x is y</td>
+                <td>False(it may have same content but different object)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>x is z</td>
+                  <td>True(because by keeping z=x both are same object)</td>
+                  </tr>
+                <tr>
+                <td>is not</td>
+                <td>Returns True if both variables are not the same object</td>
+                <td>x is not y</td>
+                <td>True (both are not same object)</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>x not is z</td>
+                  <td> False </td>
+                  </tr>
+                <tr>
+                </table>
+                
+                <hr>
+                
+                <h2>Python Membership Operators</h2>
+                
+                <p>Membership operators are used to test if a sequence is presented in an object:</p>
+                <div id="table">
+                  <h1 style="font-size: 20px;">
+                    Variables<br>
+                  </h1>
+                  <div id="example">
+                    x=["operator","python"]<br>
+                    y="python3"<br>
+                    z="python"
+                  </div>
+                </div>
+                <table>
+                <tr>
+                <th style="width:25%">Operator</th>
+                <th style="width:35%">Description</th>
+                <th style="width:30%">Example</th>
+                <th style="width:10%">Try it</th>
+                </tr>
+                <tr>
+                <td>in&nbsp;</td>
+                <td>Returns True if a sequence with the specified value is present in the object</td>
+                <td>y in x</td>
+                <td>False</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>z in x</td>
+                  <td>True</td>
+                  </tr>
+                <tr>
+
+                <td>not in</td>
+                <td>Returns True if a sequence with the specified value is not present in the 
+                object</td>
+                <td>y not in x</td>
+                <td>True</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>z not in x</td>
+                  <td>False</td>
+                  </tr>
+                <tr>
+                </table>
+                <p>Now You completed the tutorial you can play the game</p>
+                <button id="button1" onclick="files()" style="background-color: gold;width: 150px; height:50px" ><b>Game</b>
+          </div>
+    </body>
+    <script>
+      function files()
+      {
+        window.location.href="../operators-arena/index.html";
+      }
+    </script>
+</html>

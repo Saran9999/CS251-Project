@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="editor-styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.0/full/pyodide.js"></script>
+  </head>
+  <body style="background-color: lightgoldenrodyellow;">
+
+    <div id="main">
+      <button class = "button-63"id="button1" onclick="files()" style="background-image:linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);border-radius: 15px;width: 150px; height:50px"><b>Prev Tutorial</b></button>
+       <h1>Variables</h1>
+      <button class = "button-63"id="button2" onclick="restart()" style="background-image:linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);border-radius: 15px;width: 150px; height:50px" ><b>Next Tutorial</b>
+    </div>
+
+    <div class="bg" style="position:relative;width:61%;float:left;">
+      <img src="preview1_11_orig.jpg" alt="" style="width: 100%;">
+      <img src="images/1-removebg-preview.png" alt="" style="height:5.5%;position:absolute;left:19.5%;top:84%;">
+      <img src="images/2-removebg-preview.png" alt="" style="height:5.5%;position:absolute;left:72.5%;top:84%;">
+      <img src="images/3-removebg-preview.png" alt="" style="height:5.5%;position:absolute;left:84%;top:84%;">
+      <img src="images/4-removebg-preview.png" alt="" style="height:5.5%;position:absolute;left:19.5%;top:56.5%;">
+      <img src="images/5-removebg-preview.png" alt="" style="height:5.5%;position:absolute;left:25%;top:56.5%;">
+      <img src="images/6-removebg-preview.png" alt="" style="height:5.5%;position:absolute;left:25%;top:29%;">
+      <img src="images/7-removebg-preview.png" alt="" style="height:5.5%;position:absolute;left:43%;top:29%;">
+      <img src="images/My project-1.png" alt="" style="height:14%;position:absolute;left:1%;top:75%;" id="warrior">
+      <img src="images/gem1.png" class="gem" id="g2" alt="" style="height: 6%;position: absolute;left:72.5%;top:78% ;">
+    </div>
+
+    <div class="editor">
+        <div class="text-right">
+            <input type="file" class = "btn btn-secondary" id="filetoRead" style="width: 100%;">
+        </div>
+        <div class="editor__wrapper">
+            <div class="editor__body">
+                <div id="editorCode" class="editor__code"></div>
+            </div>
+            <div class="editor__footer">
+                <div class="editor__footer--left">
+                    <button class="editor__btn editor__run" onclick="evaluatePython()">Run ></button>
+                </div>
+                <div class="editor__footer--right">
+                    <div class="editor__console">
+                        <textarea id="output" name="output" class="w-100" rows="5">                        
+                        </textarea>
+                        <div style="height: 100px; width: 100%; color: rgb(238, 131, 37);font-size: large; overflow-y: auto;">
+                          <h2 style="font-size: 20px; color:black;">
+                              Goals:
+                          </h2>
+                          <ul>
+                            <li id="goal1">Get to the key</li>
+                            <li id="goal2">Collect the gem</li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Required Ace Libraries -->
+    <script src="../src-min/ace.js"></script>
+    <script src="../src-min/mode-python.js"></script>
+    <script src="../src-min/ext-language_tools.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="editor.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="move.js"></script> -->
+    <script>
+      function files()
+      {
+        window.location.href="../tutorials/sample.html";
+      }
+      function restart()
+      {
+        window.location.href="../tutorials/operator.html";
+      }
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,361 @@
+/**
+ * Output 
+ * @type {object}
+ */
+ const output = document.getElementById("output");
+
+ /**
+  * Settingup Ace
+  * @type {object}
+  */
+ let codeEditor = ace.edit("editorCode");
+ output.value = "Initializing...\n";
+ 
+ /**
+  * Default code provider
+  * @type {string}
+  */
+ let defaultcode = "#Hero.moveTo(a): This function will move your Hero to the position a, He can move only to adjacent positions\n#Hero.attack(a): This function will attack the knight at position a if the output of your factorial function is correct\n#Nothing happens if you attack at a place with no knight\ndef factorial(x):\n    y=1\n    #Write your code for factorial function\n    #Factorial function returns y which has value of x!\n\n\n    return y\nHero.moveTo(1)";
+ 
+ /**
+  * Configuring Ace Properties
+  * @type {object}
+  */
+ let editorLib = {
+     init() {
+       // Theme
+       codeEditor.setTheme("ace/theme/xcode");
+       // Set language
+       codeEditor.session.setMode("ace/mode/python");
+       // Set Options
+       codeEditor.setOptions({
+           fontFamily: 'monospace',
+           fontSize: '13pt',
+           autoScrollEditorIntoView: true,
+           enableLiveAutocompletion: true,
+           highlightActiveLine: true,
+           highlightSelectedWord: true,
+           cursorStyle:"slim"
+       });
+       // Set Default Code
+       codeEditor.setValue(defaultcode);        
+     }
+ }
+ 
+ /**
+  * Position of the warrior
+  * @type {number}
+  */
+ let position = 0;
+ 
+ /**
+  * Direction in which warrior is facing
+  * @type {number}
+  */
+ let left_right = 1;
+ 
+ 
+ /**
+  * Count of number of points in arena
+  * @type {number}
+  */
+ const no_of_points = 10;
+ 
+ /**
+  * Counts number of gems collected by warrior in arena
+  * @type {number}
+  */
+ let count_gems = 0;
+ /**
+  * Counts number of kills made
+  * @type {number}
+  */
+ let num_kills=0;
+ 
+ /**
+  * Array to track each position and its neighbouring positions
+  * @type {Array<number>}
+  */
+ let points = new Array(no_of_points);
+ points[0] = [86,23,1];
+ points[1] = [65,34,0,2,3];
+ points[2] = [81,53,1];
+ points[3] = [50,40,1,4];
+ points[4] = [40,62,5,3];
+ points[5] = [16,52,6,8,4];
+ points[6] = [11,35,5,7];
+ points[7] = [-1,45,6];
+ points[8] = [15.5,71,5,6,9];
+ points[9] = [11,87,8];
+ 
+ /**
+  * Positions of the goblin
+  * @type {Array<number>}
+  */
+ let gob = [-1,-1,1,-1,1,-1,1,-1,1,-1]
+ 
+ /**
+ * Resizes the knight
+ */
+function resizing(){
+  var width = window.innerWidth*0.61;
+  document.getElementById("p2").style.transform = `scale(${width/1126})`;
+  document.getElementById("p4").style.transform = `scale(${width/1126})`;
+  document.getElementById("p6").style.transform = `scale(${width/1126})`;
+  document.getElementById("p8").style.transform = `scale(${width/1126})`;
+}
+window.onresize = resizing;
+window.onload = resizing;
+ /**
+  * Initiates the pyodide editor using loadpyodide and returns the editor
+  * @returns {object} pyodide
+  */
+ async function main() {  
+   let pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.21.0/full/" });
+     // Pyodide ready
+   output.value += "Ready!\n";
+     return pyodide;  
+ };
+ 
+ /**
+  * Pyodide initialization promise
+  * @type {object}
+  */
+ let pyodideReadyPromise = main();
+ 
+ /**
+  * Adds the output to output textarea in the page
+  * @param {*} s 
+  */
+ function addToOutput(s) {
+     output.value += ">>>" + s + "\n";
+ }
+ 
+ /**
+  * Function to calculate factorial
+  * @param {number} s 
+  * @returns {number} factorial(s)
+  */
+ function fact(s){
+   a = 1;
+   for(var i=1;i<s+1;i++){
+     a = a*i;
+   }
+   return a;
+ }
+ 
+ /**
+  * Checks the position of the warrior and decides wether warrior is safe or not
+  * @param {number} s 
+  * @param {number} iter 
+  * @param {object} passedmap 
+  */
+ async function check(s,iter,passedmap){
+   if(s==9){
+     // Hidding gems in the page if the warrior reaches that position
+     let text2="g";
+     let name2 = text2.concat(String(s));
+     var id1= document.getElementById(name2); 
+     if(id1){
+       if(window.getComputedStyle(id1).visibility === "visible"){
+         count_gems++;
+         id1.style.visibility = "hidden";  
+       }
+     }    
+     await new Promise(r=>setTimeout(r,500));
+     // Won or lost the game
+
+     if(count_gems == 4){    
+      document.getElementById("goal1").style.color="green";  
+       if(confirm("You have successfully completed all the tutorials, feel free to play again!!! ")){
+         window.location.href="../tutorials/index.html"
+       }
+       else{
+         window.location.reload()
+       }
+     }
+     else{
+       alert("You have not collected all the gems in the game");
+       window.location.reload();
+     }
+   }
+ 
+   // Hidding gems in the page if the warrior reaches that position
+   let text2="g";
+   let name2 = text2.concat(String(s));
+   var id1= document.getElementById(name2); 
+   if(id1){
+     if(window.getComputedStyle(id1).visibility === "visible"){
+       count_gems++;
+       id1.style.visibility = "hidden";  
+     }
+   }
+   let text1="p";
+     let name1 = text1.concat(String(s));
+     var id= document.getElementById(name1);
+   if(id && window.getComputedStyle(id).visibility === "visible"){
+     // Hidding knights in the page if the warrior reaches that position and calls attack
+
+     if(passedmap.has(fact(s))){      
+       if(iter==passedmap.get(fact(s))){
+         console.log(passedmap.get(fact(s)))
+         gob[s]  = -1;       
+         id.style.visibility = "hidden";
+         num_kills++;            
+       }      
+     }
+     else{
+       // Animating the knight and killing the warrior 
+       func(id);
+       await new Promise(r=>setTimeout(r,1000));
+       alert("The knight has killed you\nYour function factorial may not be correct or\n You may not have called attack at the position of knight ");
+       window.location.reload();
+     }
+     if (num_kills== 4)
+     {
+      document.getElementById("goal1").style.color="green";
+     }
+   }  
+ }
+ 
+ /**
+  * Function to handle exception whether the night is out of arena or not
+  */
+ function moving_out(){
+   alert("Movement not possible");
+   window.location.reload();
+ }
+ 
+ /**
+  * Loads the pyodide,
+  * checks if there are any print statements and prints them into output text area,
+  * checks if any wranings or errors are present in the code written by user in the editor, if no implements the movements
+  */
+ async function evaluatePython() {
+   
+   // Calls pyodide main() function
+     let pyodide = await pyodideReadyPromise;
+   
+   // Load packages if any in the code written by user
+   await pyodide.loadPackagesFromImports(codeEditor.getValue())
+ 
+     try {
+     codeEditor.session.clearAnnotations();
+     position = 0;
+     for(let f=0;f<10;f++){
+       let text="g";
+       let name = text.concat(String(f));
+       var id= document.getElementById(name);
+       if (id){
+         id.style.visibility="visible";
+       }
+     }
+     for(let f=0;f<10;f++){
+       let text="p";
+       let name = text.concat(String(f));
+       var id= document.getElementById(name);
+       if (id){
+         gob[f] = 1;
+         id.style.visibility="visible";
+       }
+     }
+     $("#warrior").animate({left:points[position][0] + "%"},0,);
+     $("#warrior").animate({top:points[position][1] + "%"},0,);		
+    let put = pyodide.runPython("printer=[]\ndef print(x): printer.append(x)\ndict={}\nz=[]\nclass hero:\n def __init__(self,a):\n  self.position=a\n def moveTo(self,a):\n  z.append(a)\n  self.position=a\n def attack(self,a):\n  if factorial(a) not in dict: dict[factorial(a)]=len(z)-1\nHero = hero(0)"+codeEditor.getValue());
+     var x = (codeEditor.getValue()).split("\n");
+     // To mark warnings in the editor 
+     var b = [];    
+     for(var i = 0;i<x.length;i++){
+       if((x[i]=="Hero.moveTo")||(x[i]=="Hero.attack")||(x[i]=="Hero")){
+         b.push({
+           row: i,
+           column: 0,
+           text: "function",
+           type: "warning" // also warning and information
+         });
+       }
+     }
+     codeEditor.getSession().setAnnotations(b);
+ 
+     // If no warnings and errors then animate the warrior according to code written by user
+     if(b.length==0){
+       let a = pyodide.globals.get("z").toJs();
+       let map = pyodide.globals.get("dict").toJs(); 
+       // Print the value into output       
+       let p = pyodide.globals.get("printer").toJs();
+       for(var i=0;i<p.length;i++){
+         addToOutput(p[i]);
+       }       
+       for(var i=0;i<a.length;i++){
+         if(points[position].slice(2).includes(a[i])){
+           let new_pos = a[i];
+           //Turns the warrior to particular direction
+           if(left_right==1 && points[new_pos][0] < points[position][0]){
+             document.getElementById("warrior").style.transform = "scaleX(-1)";
+             left_right = -1;
+           }
+           else if(left_right==-1 && points[new_pos][0] > points[position][0]){
+             document.getElementById("warrior").style.transform = "scaleX(+1)";
+             left_right = 1;
+           }
+           $("#warrior").animate({top:(points[new_pos][1] + "%"),left:(points[new_pos][0] + "%") },{duration:1000,complete:function(){check(new_pos,i,map)}});        
+           // If the knight is present make thw warrior to wait sometime
+           let text2 = "p";
+           let name2 = text2.concat(String(new_pos));
+           const id2 = document.getElementById(name2);
+           position = new_pos;
+           if (new_pos==9)
+          {
+            document.getElementById("goal3").style.color="green";
+          }
+           if(id2 && window.getComputedStyle(id2).visibility === "visible"){
+             await new Promise(r=>setTimeout(r,3000));
+           }
+           else{
+             await new Promise(r=>setTimeout(r,1000));
+           }        
+         }
+         else{
+           $("#warrior").animate({top:points[position][1] + "%",left:points[position][0]},{duration:0,complete: function(){moving_out()}});
+           break;
+         }
+       }
+     }		
+     } catch (err) {
+        var error = err.toString().split("\n");
+        addToOutput(err);        
+        let p = pyodide.globals.get("printer").toJs();
+        console.log(p);
+        for(var i=0;i<p.length;i++){
+        addToOutput(p[i]);
+        }
+        
+     // add error symbols to the editor
+     var str = err.toString().match(/\d+/g);
+     codeEditor.getSession().setAnnotations([{
+         row: str[str.length-1]-13,
+         column: 0,
+         text: error[error.length -2],
+         type: "error" // also warning and information
+     }]);		
+     }
+ }
+ 
+ editorLib.init();
+ 
+ //Function to read the uploaded file and write it into editor
+ document.getElementById("filetoRead").addEventListener("change",function(){
+     var file = this.files[0];
+ 
+     if (file) {
+         var reader = new FileReader();
+         reader.onload = function (evt) {
+             console.log(evt);
+             codeEditor.setValue(evt.target.result);            
+         };
+         reader.onerror = function (evt) {
+             alert("An error ocurred reading the file",evt);
+         };
+         reader.readAsText(file, "UTF-8");
+     }
+ },false);
